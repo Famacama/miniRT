@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: famacama <famacama@student.s19.be>         +#+  +:+       +#+        */
+/*   By: famacama <famacama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 11:37:12 by famacama          #+#    #+#             */
-/*   Updated: 2020/12/03 12:43:06 by famacama         ###   ########.fr       */
+/*   Updated: 2020/12/10 15:31:48 by famacama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef struct  s_resolution
     unsigned int reso_y;
 }               t_resolution;
 
+typedef struct s_vector
+{
+    double x;
+    double y;
+    double z;
+}               t_vector;
+
+
 typedef struct t_lumiere_ambiante
 {
     double rdlr; //ratio dans le range
@@ -38,6 +46,7 @@ typedef struct t_lumiere_ambiante
 
 typedef struct s_camera
 {
+    //t_vector c;
     double  x;
     double  y;
     double  z;
@@ -57,6 +66,7 @@ typedef struct  s_lumiere
     unsigned int r;
     unsigned int g;
     unsigned int b;
+    //typedef struct s_lumiere *next;
 }               t_lumiere;
 
 typedef struct  s_sphere

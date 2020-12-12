@@ -6,7 +6,7 @@
 /*   By: famacama <famacama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 11:08:15 by famacama          #+#    #+#             */
-/*   Updated: 2020/12/10 18:12:42 by famacama         ###   ########.fr       */
+/*   Updated: 2020/12/11 19:58:27 by famacama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ double dist(double x1, double y1, double z1, double x2, double y2, double z2)
 
 int find_intersection(int count_x, int count_y, int count_z)
 {
+	printf("v1 == %d\n", (carre(count_x - (g_lumiere.x)) + carre(count_y - (g_lumiere.y)) + carre(count_z - g_lumiere.z)));
+	printf("===========\n");
+	printf("dist %d\n", carre(dist(count_x, count_y, count_z, g_lumiere.x, g_lumiere.y, g_lumiere.z)/2));
+
 	if ((carre(count_x - (g_lumiere.x)) + carre(count_y - (g_lumiere.y)) + carre(count_z - g_lumiere.z)) <= carre(dist(count_x, count_y, count_z, g_lumiere.x, g_lumiere.y, g_lumiere.z)))
 		return (1);
 	return (0);
@@ -80,6 +84,7 @@ int find_intersection(int count_x, int count_y, int count_z)
 int find_sphere(int count_x, int count_y, int count_z)
 {
 	//(X-Xc)^2 + (Y-Yc)^2 + (Z-Zc)^2 = r^2
+	
 	if ((carre(count_x - (g_sphere.x)) + carre(count_y - (g_sphere.y)) + carre(count_z - g_sphere.z)) <= carre(g_sphere.d / 2))
 		return (1);
 	return (0);
@@ -87,6 +92,7 @@ int find_sphere(int count_x, int count_y, int count_z)
 
 int light(int count_x, int count_y, int count_z)
 {
+	//printf("find spehre = %d\n", find_intersection(count_x, count_y, count_z));
 	if (find_sphere(count_x, count_y, count_z) && find_intersection(count_x, count_y, count_z))
 		return (1);
 	return (0);
@@ -128,13 +134,18 @@ int main(int argc, char **argv)
 				//printf("lumiere == %d\n", find_intersection(count_x, count_y, count_z));	
 				if (light(count_x, count_y, count_z) == 1)
 				{
+					//printf("1");
 					g_mlx.img.data[count_y * g_reso.reso_x + count_x] = calculate_rgb(g_sphere.r, g_sphere.g, g_sphere.b);
+					return 0;
 					//printf("lumiere == %d\n", find_intersection(count_x, count_y, count_z));				
 				}
 				else
 					g_mlx.img.data[count_y * g_reso.reso_x + count_x] = calculate_rgb(g_la.r, g_la.g, g_la.b);
+					//printf("0");
+					
 				count_z++;
 			}
+			//printf("\n");
 			count_x++;
 		}
 		count_y++;

@@ -6,7 +6,7 @@
 /*   By: famacama <famacama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 11:08:15 by famacama          #+#    #+#             */
-/*   Updated: 2020/12/13 18:34:07 by famacama         ###   ########.fr       */
+/*   Updated: 2020/12/15 19:50:45 by famacama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ int carre(int a)
 	printf("ok\n");
 	return(0);
 }*/
+
+float	diff_angle(float u[3], float v[3])
+{
+	float	ang;
+	ang = (u[0] * v[0] + u[1] * v[1] + u[2] * v[2]);
+	return (acos(ang) * (180 / M_PI));
+}
 
 int close_program(void *param)
 {
@@ -103,6 +110,13 @@ int calculate_rgb(int r, int g, int b)
 {
 	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }
+int find_ambiant_light(int r, int g, int b)
+{
+	r = g_la.rdlr * ((r + g_la.r) / 2);
+	g = g_la.rdlr * ((g + g_la.g) / 2);
+	b = g_la.rdlr * ((b + g_la.b) / 2);
+	return (calculate_rgb(r,g,b));
+}
 
 int main(int argc, char **argv)
 {
@@ -110,13 +124,13 @@ int main(int argc, char **argv)
 	unsigned int count_y;
 	int count_z;
 
-	unsigned int r;
-	unsigned int g;
-	unsigned int b;
+	// unsigned int r;
+	// unsigned int g;
+	// unsigned int b;
 
-	r = 1;
-	g = 255;
-	b = 100;
+	// r = 1;
+	// g = 255;
+	// b = 100;
 	ft_parse(argc, argv);
 	g_mlx.mlx_ptr = mlx_init();
 	g_mlx.win = mlx_new_window(g_mlx.mlx_ptr, g_reso.reso_x, g_reso.reso_y, "firts window");
@@ -136,12 +150,12 @@ int main(int argc, char **argv)
 				if (light(count_x, count_y, count_z) == 1)
 				{
 					//printf("1");
-					g_mlx.img.data[count_y * g_reso.reso_x + count_x] = calculate_rgb(g_sphere.r, g_sphere.g, g_sphere.b);
+					g_mlx.img.data[count_y * g_reso.reso_x + count_x] = find_ambiant_light(g_sphere.r, g_sphere.g, g_sphere.b);
 					//return 0;
 					//printf("lumiere == %d\n", find_intersection(count_x, count_y, count_z));				
 				}
 				else
-					g_mlx.img.data[count_y * g_reso.reso_x + count_x] = calculate_rgb(g_la.r, g_la.g, g_la.b);
+					g_mlx.img.data[count_y * g_reso.reso_x + count_x] = find_ambiant_light(g_la.r, g_la.g, g_la.b);
 					//printf("0");
 					
 				count_z++;

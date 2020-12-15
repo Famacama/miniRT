@@ -1,5 +1,22 @@
 #include "minirt.h"
 
+
+
+
+
+float	diff_angle(float u[3], float v[3])
+{
+	float	ang;
+	ang = (u[0] * v[0] + u[1] * v[1] + u[2] * v[2]);
+	return (acos(ang) * (180 / M_PI));
+}
+
+int main(void)
+{
+	float *u;
+	u[0] = 
+}
+/*
 int main(void)
 {
 	t_mlx	mlx;
@@ -44,3 +61,4 @@ int main(void)
 	mlx_loop(mlx.mlx_ptr);
 	return (0);
 }
+*/

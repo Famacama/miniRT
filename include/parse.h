@@ -6,7 +6,7 @@
 /*   By: famacama <famacama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 11:37:12 by famacama          #+#    #+#             */
-/*   Updated: 2020/12/10 15:31:48 by famacama         ###   ########.fr       */
+/*   Updated: 2020/12/13 18:00:29 by famacama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ typedef struct  s_lumiere
 
 typedef struct  s_sphere
 {
-    int  x;
-    int  y;
-    int  z;
-    int  d;
+    double  x;
+    double  y;
+    double  z;
+    double  d;
     unsigned int r;
     unsigned int g;
     unsigned int b;

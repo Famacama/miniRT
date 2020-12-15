@@ -6,7 +6,7 @@
 /*   By: famacama <famacama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 11:08:15 by famacama          #+#    #+#             */
-/*   Updated: 2020/12/11 19:58:27 by famacama         ###   ########.fr       */
+/*   Updated: 2020/12/13 18:34:07 by famacama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,12 @@ double dist(double x1, double y1, double z1, double x2, double y2, double z2)
 
 int find_intersection(int count_x, int count_y, int count_z)
 {
-	printf("v1 == %d\n", (carre(count_x - (g_lumiere.x)) + carre(count_y - (g_lumiere.y)) + carre(count_z - g_lumiere.z)));
-	printf("===========\n");
-	printf("dist %d\n", carre(dist(count_x, count_y, count_z, g_lumiere.x, g_lumiere.y, g_lumiere.z)/2));
+	//printf("v1 == %d\n", (carre(count_x - (g_lumiere.x)) + carre(count_y - (g_lumiere.y)) + carre(count_z - g_lumiere.z)));
+	//printf("===========\n");
+	//printf("dist %d\n", carre(dist(count_x, count_y, count_z, g_lumiere.x, g_lumiere.y, g_lumiere.z)/2));
 
-	if ((carre(count_x - (g_lumiere.x)) + carre(count_y - (g_lumiere.y)) + carre(count_z - g_lumiere.z)) <= carre(dist(count_x, count_y, count_z, g_lumiere.x, g_lumiere.y, g_lumiere.z)))
+	//if ((carre(count_x - (g_lumiere.x)) + carre(count_y - (g_lumiere.y)) + carre(count_z - g_lumiere.z)) <= carre(dist(count_x, count_y, count_z, g_lumiere.x, g_lumiere.y, g_lumiere.z)))
+	if (dist(count_x, count_y, count_z, g_lumiere.x, g_lumiere.y, g_lumiere.z) <= dist(g_sphere.x, g_sphere.y, g_sphere.z, g_lumiere.x, g_lumiere.y, g_lumiere.z))
 		return (1);
 	return (0);
 }
@@ -136,7 +137,7 @@ int main(int argc, char **argv)
 				{
 					//printf("1");
 					g_mlx.img.data[count_y * g_reso.reso_x + count_x] = calculate_rgb(g_sphere.r, g_sphere.g, g_sphere.b);
-					return 0;
+					//return 0;
 					//printf("lumiere == %d\n", find_intersection(count_x, count_y, count_z));				
 				}
 				else

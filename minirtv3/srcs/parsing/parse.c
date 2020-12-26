@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: famacama <famacama@student.s19.be>         +#+  +:+       +#+        */
+/*   By: famacama <famacama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 11:39:44 by famacama          #+#    #+#             */
-/*   Updated: 2020/12/09 20:47:25 by famacama         ###   ########.fr       */
+/*   Updated: 2020/12/21 11:26:41 by famacama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void resolution(char **line)
 
 void camera(char **line)
 {
-	g_camera.x = str_to_float(line);
-	g_camera.y = str_to_float(line);
-	g_camera.z = str_to_float(line);
+	g_camera.c.x = str_to_float(line);
+	g_camera.c.y = str_to_float(line);
+	g_camera.c.z = str_to_float(line);
 	g_camera.vo_x = str_to_float(line);
 	g_camera.vo_y = str_to_float(line);
 	g_camera.vo_z = str_to_float(line);
@@ -95,9 +95,9 @@ void camera(char **line)
 
 void lumiere(char **line)
 {
-	g_lumiere.x = str_to_float(line);
-	g_lumiere.y = str_to_float(line);
-	g_lumiere.z = str_to_float(line);
+	g_lumiere.s.x = str_to_float(line);
+	g_lumiere.s.y = str_to_float(line);
+	g_lumiere.s.z = str_to_float(line);
 	g_lumiere.rdlr = str_to_float(line);
 	g_lumiere.r = find_next_value(line);
 	g_lumiere.g = find_next_value(line);
@@ -106,9 +106,9 @@ void lumiere(char **line)
 
 void sphere(char **line)
 {
-	g_sphere.x = str_to_float(line);
-	g_sphere.y = str_to_float(line);
-	g_sphere.z = str_to_float(line);
+	g_sphere.sp.x = str_to_float(line);
+	g_sphere.sp.y = str_to_float(line);
+	g_sphere.sp.z = str_to_float(line);
 	g_sphere.d = str_to_float(line);
 	g_sphere.r = find_next_value(line);
 	g_sphere.g = find_next_value(line);

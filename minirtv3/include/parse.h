@@ -6,7 +6,7 @@
 /*   By: famacama <famacama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 11:37:12 by famacama          #+#    #+#             */
-/*   Updated: 2020/12/17 15:05:51 by famacama         ###   ########.fr       */
+/*   Updated: 2020/12/21 11:26:32 by famacama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ typedef struct t_lumiere_ambiante
 
 typedef struct s_camera
 {
-    //t_vector c;
-    double  x;
-    double  y;
-    double  z;
+    t_vector c;
+    // double  x;
+    // double  y;
+    // double  z;
     //t_vector c;
     double vo_x;
     double vo_y;
@@ -60,9 +60,10 @@ typedef struct s_camera
 
 typedef struct  s_lumiere
 {
-    double  x;
-    double  y;
-    double  z;
+    t_vector s;
+    // double  x;
+    // double  y;
+    // double  z;
     //t_vector lu;
     double  rdlr;
     unsigned int r;
@@ -73,9 +74,10 @@ typedef struct  s_lumiere
 
 typedef struct  s_sphere
 {
-    double  x;
-    double  y;
-    double  z;
+    t_vector sp;
+    // double  x;
+    // double  y;
+    // double  z;
     double  d;
     unsigned int r;
     unsigned int g;
